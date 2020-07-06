@@ -1,0 +1,13 @@
+const Discord = require("discord.js");
+
+const EmbedMrigu = new Discord.MessageEmbed()
+  .setTitle("茶の間的Ｍリーグ")
+  .setDescription(
+    "ルール説明 : [[ **Documents** ](https://docs.google.com/document/d/107ueMkvNEKYKXFZuLIWI6cf2B1eTYZOM8JFtQGy9nyQ/edit)]\n点数表 : [[ **SpreadSheets** ](https://docs.google.com/spreadsheets/d/1huyjPTatYJvhMzPFx3SRWjZQk7WHyNy5wotztUq6pfo/edit?usp=sharing)]"
+  )
+  .setColor(1752220);
+
+exports.run = (client, message, args) => {
+  message.channel.send(EmbedMrigu);
+  return;
+};
