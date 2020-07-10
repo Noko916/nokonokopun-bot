@@ -63,6 +63,11 @@ const EmbedBoxP = new Discord.MessageEmbed()
   .setColor(1752220);
 
 exports.run = (client, message, args) => {
+  
+  if(args[0] != "b" || args[0] != "B" || args[0] != "s" || args[0] != "S" || args[0] != "g" || args[0] != "G" || args[0] != "g+" || args[0] != "G+" || args[0] != "P" || args[0] != "P"){
+    message.channel.send("`.box <B/S/G/G+/P>` の形式で入力してください　例: `.box G+`")    
+     }
+  
   if (args[0] == "b"||args[0] == "B") {
     message.channel.send(EmbedBoxB);
     return;
