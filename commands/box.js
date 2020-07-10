@@ -4,16 +4,10 @@ const EmbedBoxB = new Discord.MessageEmbed()
   .setTitle("箱開け報酬 ブロンズ")
   .addFields(
     {
-      name: ".",
-      value:
-        "Deal: \n　２: \n　３: \n　４: \n　５: \n　６: \n　７: \n　８: \n　９: \n　Ｔ: \n　Ｊ: \n　Ｑ: \n　Ｋ: \n　Ａ:",
-      inline: true
-    },
-    {
       name: "Bronze",
       value:
-        "5P\n-\n-\n-\n-\n-\n5P\n10P\n15P\n20P\n25P\n30P\n抽選数字+2\n青着席権(Lv.15)",
-      inline: true
+        "Deal:　5P\n ========== \n　２:　-\n　３:　-\n　４:　-\n　５:　-\n　６:　-\n　７:　5P\n　８:　10P\n　９:　15P\n　10:　20P\n　Ｊ:　25P\n　Ｑ:　30P\n　Ｋ:　抽選数字+2\n　Ａ:　青着席権(Lv.15)",
+      inline: false
     }
   )
   .setColor(1752220);
@@ -22,16 +16,10 @@ const EmbedBoxS = new Discord.MessageEmbed()
   .setTitle("箱開け報酬　シルバー")
   .addFields(
     {
-      name: ".",
-      value:
-        "Deal: \n　２: \n　３: \n　４: \n　５: \n　６: \n　７: \n　８: \n　９: \n　Ｔ: \n　Ｊ: \n　Ｑ: \n　Ｋ: \n　Ａ:",
-      inline: true
-    },
-    {
       name: "Silver",
       value:
-        "20P\n5P\n5P\n5P\n10P\n10P\n15P\n30P\n50P\n100P\n抽選数字＋２\n着席権（Lv.15）\n着席権（Lv.20）\n着席権（Lv.∞）",
-      inline: true
+        "Deal:　20P\n ========== \n　２:　5P\n　３:　5P\n　４:　5P\n　５:　10P\n　６:　10P\n　７:　15P\n　８:　30P\n　９:　50P\n　10:　100P\n　Ｊ:　抽選数字＋２\n　Ｑ:　青着席権（Lv.15）\n　Ｋ:　青着席権（Lv.20）\n　Ａ:　青着席権（Lv.∞）",
+      inline: false
     }
   )
   .setColor(1752220);
@@ -40,16 +28,10 @@ const EmbedBoxG = new Discord.MessageEmbed()
   .setTitle("箱開け報酬　ゴールド")
   .addFields(
     {
-      name: ".",
-      value:
-        "Deal: \n　２: \n　３: \n　４: \n　５: \n　６: \n　７: \n　８: \n　９: \n　Ｔ: \n　Ｊ: \n　Ｑ: \n　Ｋ: \n　Ａ:",
-      inline: true
-    },
-    {
       name: "Gold",
       value:
-        "100P\n30P\n30P\n30P\n50P\n100P\n200P\n300P\n着席権（Lv.20）\n着席権（Lv.∞）\n着席権（Lv.∞）＋50P\n着席権\n着席権＋50P\nVIP着席権×1 or 10PP",
-      inline: true
+        "Deal:　100P\n ========== \n　２:　30P\n　３:　30P\n　４:　30P\n　５:　50P\n　６:　100P\n　７:　200P\n　８:　300P\n　９:　青着席権（Lv.20）\n　10:　青着席権（Lv.∞）\n　Ｊ:　青着席権（Lv.∞）＋50P\n　Ｑ:　赤着席権\n　Ｋ:　赤着席権＋50P\n　Ａ:　VIP着席権×1 or 10PP",
+      inline: false
     }
   )
   .setColor(1752220);
@@ -58,16 +40,10 @@ const EmbedBoxGp = new Discord.MessageEmbed()
   .setTitle("箱開け報酬　ゴールド +")
   .addFields(
     {
-      name: ".",
-      value:
-        "Deal: \n　２: \n　３: \n　４: \n　５: \n　６: \n　７: \n　８: \n　９: \n　Ｔ: \n　Ｊ: \n　Ｑ: \n　Ｋ: \n　Ａ:",
-      inline: true
-    },
-    {
       name: "Gold+",
       value:
-        "200P\n30P\n30P\n50P\n100P\n200P\n300P\n着席権（Lv.20）\n着席権（Lv.∞）\n着席権（Lv.∞）＋50P\n着席権\n着席権＋50P\nVIP着席権×1 or 10PP\nVIP着席権×2 or 20PP",
-      inline: true
+        "Deal:　200P\n ========== \n　２:　30P\n　３:　30P\n　４:　50P\n　５:　100P\n　６:　200P\n　７:　300P\n　８:　青着席権（Lv.20）\n　９:　青着席権（Lv.∞）\n　10:　青着席権（Lv.∞）＋50P\n　Ｊ:　赤着席権\n　Ｑ:　赤着席権＋50P\n　Ｋ:　VIP着席権×1 or 10PP\n　Ａ:　VIP着席権×2 or 20PP",
+      inline: false
     }
   )
   .setColor(1752220);
@@ -76,34 +52,28 @@ const EmbedBoxP = new Discord.MessageEmbed()
   .setTitle("箱開け報酬　プラチナ")
   .addFields(
     {
-      name: ".",
-      value:
-        "Deal: \n　２: \n　３: \n　４: \n　５: \n　６: \n　７: \n　８: \n　９: \n　Ｔ: \n　Ｊ: \n　Ｑ: \n　Ｋ: \n　Ａ:",
-      inline: true
-    },
-    {
       name: "Platinum",
       value:
-        "1000P\n200P\n300P\n400P\n500P\n700P\n1000P\n着席権\n着席権＋50P\n着席権＋100P\nVIP着席権×1 or 10PP\nVIP着席権×2 or 20PP\nVIP着席権×3 or 30PP\nVIP着席権×5 or 50PP",
-      inline: true
+        "Deal:　1000P\n ========== \n　２:　200P\n　３:　300P\n　４:　400P\n　５:　500P\n　６:　700P\n　７:　1000P\n　８:　赤着席権\n　９:　赤着席権＋50P\n　10:　赤着席権＋100P\n　Ｊ:　VIP着席権×1 or 10PP\n　Ｑ:　VIP着席権×2 or 20PP\n　Ｋ:　VIP着席権×3 or 30PP\n　Ａ:　VIP着席権×5 or 50PP",
+      inline: false
     }
   )
   .setColor(1752220);
 
 exports.run = (client, message, args) => {
-  if (args[0] == "b" || args[0] == "B") {
+  if (args[0] == "b"||args[0] == "B") {
     message.channel.send(EmbedBoxB);
     return;
-  } else if (args[0] == "s" || args[0] == "S") {
+  } else if (args[0] == "s"||args[0] == "S") {
     message.channel.send(EmbedBoxS);
     return;
-  } else if (args[0] == "g" || args[0] == "G") {
+  } else if (args[0] == "g"||args[0] == "G") {
     message.channel.send(EmbedBoxG);
     return;
-  } else if (args[0] == "g+" || args[0] == "G+") {
+  } else if (args[0] == "g+"||args[0] == "G+") {
     message.channel.send(EmbedBoxGp);
     return;
-  } else if (args[0] == "p" || args[0] == "P") {
+  } else if (args[0] == "p"||args[0] == "P") {
     message.channel.send(EmbedBoxP);
     return;
   }
