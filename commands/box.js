@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 
+//ここから
+
 const EmbedBoxB = new Discord.MessageEmbed()
   .setTitle("箱開け報酬 ブロンズ")
   .addFields(
