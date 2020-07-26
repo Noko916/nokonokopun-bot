@@ -1,4 +1,4 @@
-身内用Discord Bot
+身内用のDiscord Botです
 
 glitch > github > Heroku
 
