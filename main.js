@@ -73,7 +73,10 @@ client.on("message", message => {
 
   if (message.content.includes("everyone")) return;
 
-  if (message.content.includes("ころす"||"殺す"||"しね"||"死ね")){
+  if (message.content.includes("ころす")||
+      message.content.includes("殺す")||
+      message.content.includes("しね")||
+      message.content.includes("死ね")){
   message.channel.send("ぴぴー！暴言警察だ！");
   }
   
