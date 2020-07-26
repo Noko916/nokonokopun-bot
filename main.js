@@ -104,7 +104,7 @@ client.on("message", message => {
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否
-  if (cmdrand <= 24 && message.author.id === "284375687714963456") {
+  if (cmdrand <= 46 && message.author.id === "284375687714963456") {
     message.channel.send("いやです！:smirk:");
     return;
   } else if (cmdrand <= 1) {
