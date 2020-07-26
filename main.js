@@ -78,6 +78,7 @@ client.on("message", message => {
       message.content.includes("しね")||
       message.content.includes("死ね")){
   message.channel.send("ぴぴー！暴言警察だ！");
+  return;
   }
   
   if (message.mentions.has(client.user)) {
@@ -100,13 +101,13 @@ client.on("message", message => {
     .split(` `);
   let cmd = args.shift().toLowerCase();
 
-  const cmdran = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
+  const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否
-  if (cmdran <= 24 && message.author.id === "284375687714963456") {
+  if (cmdrand <= 24 && message.author.id === "284375687714963456") {
     message.channel.send("いやです！:smirk:");
     return;
-  } else if (cmdran <= 1) {
+  } else if (cmdrand <= 1) {
     message.channel.send("いやです:smirk:");
     return;
   } else {
