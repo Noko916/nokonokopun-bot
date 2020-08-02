@@ -10,17 +10,10 @@ http
 // Discord bot implements
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const Eris = require("eris");
-const bot = new Eris(process.env.DISCORD_BOT_TOKEN);
-
-var args = 0;
-var command = 0;
-
-var RcheckOn = false;
 
 const prefix = ".";
 
-client.on("ready", message => {
+client.on("ready", () => {
   client.user.setActivity("Civ Ⅹ", { type: "PLAYING" });
   console.log("入っているサーバー:");
   var ServerList = client.guilds.cache.map(a => a.name).join(" / ");
@@ -37,7 +30,6 @@ client.on("message", async message => {
     return;
   }
   console.log(`${message.author.tag} to cite [${message.content}]`);
-  const guild_id = results[1];
   const channel_id = results[2];
   const message_id = results[3];
 
@@ -75,14 +67,6 @@ client.on("message", message => {
 
   if (message.content.includes("everyone")) return;
 
-  if (message.content.includes("ころす") ||
-    message.content.includes("殺す") ||
-    message.content.includes("しね") ||
-    message.content.includes("死ね")) {
-    message.channel.send("ぴぴー！暴言警察だ！");
-    return;
-  }
-
   if (message.mentions.has(client.user)) {
     message.reply(
       "呼びましたか？\n問題が発生した時は、<@221360357191581697> に連絡してください。"
@@ -105,74 +89,8 @@ client.on("message", message => {
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
-
-  if (message.content == ".bosyu" || message.content == ".boend") {
-    console.log(`${message.author.tag} ran the command ${message.content}`);
-
-    //bosyu
-    if (command === "bosyu" && !RcheckOn) {
-      message.channel.send("`$boend`で募集を終了します");
-      if (args[0] === undefined) {
-        var bosyuTitle = "Users";
-      } else {
-        var bosyuTitle = args[0];
-      }
-      var RListOld = new Discord.MessageEmbed().setTitle(bosyuTitle);
-      RcheckOn = true;
-      message.channel.send(RListOld).then(message => {
-        message.react("🔼");
-        var messageId = 0;
-
-        function addo(reaction, user) {
-          if (user.bot) {
-            messageId = message.id;
-            return;
-          }
-          if (!user.bot && RcheckOn && reaction.message.id === messageId) {
-            ReactuserList.push(user.username);
-            var RListB = ReactuserList.join("\n");
-            var RListNew = new Discord.MessageEmbed()
-              .setTitle(bosyuTitle)
-              .setDescription(RListB);
-            message.edit(RListNew);
-          }
-        }
-
-        function remobe(reaction, user) {
-          if (RcheckOn && reaction.message.id === messageId) {
-            ReactuserList.splice(ReactuserList.indexOf(user.username), "1");
-            var RListB = ReactuserList.join("\n");
-            var RListNew = new Discord.MessageEmbed()
-              .setTitle(bosyuTitle)
-              .setDescription(RListB);
-            message.edit(RListNew);
-          }
-        }
-
-        function stpo(message) {
-          if (command === "boend") {
-            if (message.author.bot) return;
-            RcheckOn = false;
-            ReactuserList.length = 0;
-            client.removeListener("messageReactionAdd", addo);
-            client.removeListener("messageReactionRemove", remobe);
-            client.removeListener("message", stpo);
-            message.channel.send("募集を停止します");
-          }
-        }
-
-        client.on("messageReactionAdd", addo);
-
-        client.on("messageReactionRemove", remobe);
-
-        client.on("message", stpo);
-      });
-      return;
-    }
-
-  }
   //コマンド拒否
-  else if (cmdrand <= 49 && message.author.id === "284375687714963456") {
+  if (cmdrand <= 49 && message.author.id === "284375687714963456") {
     message.channel.send("いやです！:smirk:");
     return;
   } else if (cmdrand <= 1) {
