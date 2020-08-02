@@ -1,7 +1,7 @@
 // Response for Uptime Robot
 const http = require("http");
 http
-  .createServer(function(request, response) {
+  .createServer(function (request, response) {
     response.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Discord bot は 動いています\n");
   })
@@ -75,14 +75,14 @@ client.on("message", message => {
 
   if (message.content.includes("everyone")) return;
 
-  if (message.content.includes("ころす")||
-      message.content.includes("殺す")||
-      message.content.includes("しね")||
-      message.content.includes("死ね")){
-  message.channel.send("ぴぴー！暴言警察だ！");
-  return;
+  if (message.content.includes("ころす") ||
+    message.content.includes("殺す") ||
+    message.content.includes("しね") ||
+    message.content.includes("死ね")) {
+    message.channel.send("ぴぴー！暴言警察だ！");
+    return;
   }
-  
+
   if (message.mentions.has(client.user)) {
     message.reply(
       "呼びましたか？\n問題が発生した時は、<@221360357191581697> に連絡してください。"
@@ -106,14 +106,78 @@ client.on("message", message => {
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
 
+  if (message.content == ".bosyu" || message.content == ".boend") {
+    console.log(`${message.author.tag} ran the command ${message.content}`);
 
+    //bosyu
+    if (command === "bosyu" && !RcheckOn) {
+      message.channel.send("`$boend`で募集を終了します");
+      if (args[0] === undefined) {
+        var bosyuTitle = "Users";
+      } else {
+        var bosyuTitle = args[0];
+      }
+      var RListOld = new Discord.MessageEmbed().setTitle(bosyuTitle);
+      RcheckOn = true;
+      message.channel.send(RListOld).then(message => {
+        message.react("🔼");
+        var messageId = 0;
+
+        function addo(reaction, user) {
+          if (user.bot) {
+            messageId = message.id;
+            return;
+          }
+          if (!user.bot && RcheckOn && reaction.message.id === messageId) {
+            ReactuserList.push(user.username);
+            var RListB = ReactuserList.join("\n");
+            var RListNew = new Discord.MessageEmbed()
+              .setTitle(bosyuTitle)
+              .setDescription(RListB);
+            message.edit(RListNew);
+          }
+        }
+
+        function remobe(reaction, user) {
+          if (RcheckOn && reaction.message.id === messageId) {
+            ReactuserList.splice(ReactuserList.indexOf(user.username), "1");
+            var RListB = ReactuserList.join("\n");
+            var RListNew = new Discord.MessageEmbed()
+              .setTitle(bosyuTitle)
+              .setDescription(RListB);
+            message.edit(RListNew);
+          }
+        }
+
+        function stpo(message) {
+          if (command === "boend") {
+            if (message.author.bot) return;
+            RcheckOn = false;
+            ReactuserList.length = 0;
+            client.removeListener("messageReactionAdd", addo);
+            client.removeListener("messageReactionRemove", remobe);
+            client.removeListener("message", stpo);
+            message.channel.send("募集を停止します");
+          }
+        }
+
+        client.on("messageReactionAdd", addo);
+
+        client.on("messageReactionRemove", remobe);
+
+        client.on("message", stpo);
+      });
+      return;
+    }
+
+  }
   //コマンド拒否
-  if (cmdrand <= 49 && message.author.id === "284375687714963456") {
+  else if (cmdrand <= 49 && message.author.id === "284375687714963456") {
     message.channel.send("いやです！:smirk:");
     return;
   } else if (cmdrand <= 1) {
     message.channel.send("いやです:smirk:");
-    return;  
+    return;
   } else {
     // commands/xxx.js の読み込み
     try {
@@ -131,69 +195,6 @@ client.on("message", message => {
       console.log(`${message.author.tag} ran the command ${cmd}`);
     }
   }
-
- //bosyu
- if (command === "bosyu" && !RcheckOn) {
-  message.channel.send("`$boend`で募集を終了します");
-  if (args[0] === undefined) {
-    var bosyuTitle = "Users";
-  } else {
-    var bosyuTitle = args[0];
-  }
-  var RListOld = new Discord.MessageEmbed().setTitle(bosyuTitle);
-  RcheckOn = true;
-  message.channel.send(RListOld).then(message => {
-    message.react("🔼");
-    var messageId = 0;
-
-    function addo(reaction, user) {
-      if (user.bot) {
-        messageId = message.id;
-        return;
-      }
-      if (!user.bot && RcheckOn && reaction.message.id === messageId) {
-        ReactuserList.push(user.username);
-        var RListB = ReactuserList.join("\n");
-        var RListNew = new Discord.MessageEmbed()
-          .setTitle(bosyuTitle)
-          .setDescription(RListB);
-        message.edit(RListNew);
-      }
-    }
-
-    function remobe(reaction, user) {
-      if (RcheckOn && reaction.message.id === messageId) {
-        ReactuserList.splice(ReactuserList.indexOf(user.username), "1");
-        var RListB = ReactuserList.join("\n");
-        var RListNew = new Discord.MessageEmbed()
-          .setTitle(bosyuTitle)
-          .setDescription(RListB);
-        message.edit(RListNew);
-      }
-    }
-
-    function stpo(message) {
-      if (command === "boend") {
-        if (message.author.bot) return;
-        RcheckOn = false;
-        ReactuserList.length = 0;
-        client.removeListener("messageReactionAdd", addo);
-        client.removeListener("messageReactionRemove", remobe);
-        client.removeListener("message", stpo);
-        message.channel.send("募集を停止します");
-      }
-    }
-
-    client.on("messageReactionAdd", addo);
-
-    client.on("messageReactionRemove", remobe);
-
-    client.on("message", stpo);
-  });
-  return;
-}
-
-
 
   return;
   //ここまで
