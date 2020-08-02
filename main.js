@@ -128,18 +128,7 @@ client.on("message", message => {
       return;
     }
   }
-
-  if (message.content.startsWith(".")) {
-    args = message.content
-      .slice(prefix.length)
-      .trim()
-      .split(/ +/g);
-    command = args.shift().toLowerCase();
-  } else {
-    args = 0;
-    command = 0;
-  }
-
+  
   //ここまで
 });
 
