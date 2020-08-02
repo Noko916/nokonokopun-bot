@@ -103,6 +103,8 @@ client.on("message", message => {
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
+
+
   //コマンド拒否
   if (cmdrand <= 49 && message.author.id === "284375687714963456") {
     message.channel.send("いやです！:smirk:");
@@ -110,6 +112,7 @@ client.on("message", message => {
   } else if (cmdrand <= 1) {
     message.channel.send("いやです:smirk:");
     return;
+  } else if(message.content.startsWith(".bo")){
   } else {
     // commands/xxx.js の読み込み
     try {
@@ -127,67 +130,67 @@ client.on("message", message => {
       console.log(`${message.author.tag} ran the command ${cmd}`);
     }
   }
-  //bosyu
 
-  if (command === "bosyu" && !RcheckOn) {
-    message.channel.send("`$boend`で募集を終了します");
-    if (args[0] === undefined) {
-      var bosyuTitle = "Users";
-    } else {
-      var bosyuTitle = args[0];
+    //bosyu
+    if (command === "bosyu" && !RcheckOn) {
+      message.channel.send("`$boend`で募集を終了します");
+      if (args[0] === undefined) {
+        var bosyuTitle = "Users";
+      } else {
+        var bosyuTitle = args[0];
+      }
+      var RListOld = new Discord.MessageEmbed().setTitle(bosyuTitle);
+      RcheckOn = true;
+      message.channel.send(RListOld).then(message => {
+        message.react("🔼");
+        var messageId = 0;
+  
+        function addo(reaction, user) {
+          if (user.bot) {
+            messageId = message.id;
+            return;
+          }
+          if (!user.bot && RcheckOn && reaction.message.id === messageId) {
+            ReactuserList.push(user.username);
+            var RListB = ReactuserList.join("\n");
+            var RListNew = new Discord.MessageEmbed()
+              .setTitle(bosyuTitle)
+              .setDescription(RListB);
+            message.edit(RListNew);
+          }
+        }
+  
+        function remobe(reaction, user) {
+          if (RcheckOn && reaction.message.id === messageId) {
+            ReactuserList.splice(ReactuserList.indexOf(user.username), "1");
+            var RListB = ReactuserList.join("\n");
+            var RListNew = new Discord.MessageEmbed()
+              .setTitle(bosyuTitle)
+              .setDescription(RListB);
+            message.edit(RListNew);
+          }
+        }
+  
+        function stpo(message) {
+          if (command === "boend") {
+            if (message.author.bot) return;
+            RcheckOn = false;
+            ReactuserList.length = 0;
+            client.removeListener("messageReactionAdd", addo);
+            client.removeListener("messageReactionRemove", remobe);
+            client.removeListener("message", stpo);
+            message.channel.send("募集を停止します");
+          }
+        }
+  
+        client.on("messageReactionAdd", addo);
+  
+        client.on("messageReactionRemove", remobe);
+  
+        client.on("message", stpo);
+      });
+      return;
     }
-    var RListOld = new Discord.MessageEmbed().setTitle(bosyuTitle);
-    RcheckOn = true;
-    message.channel.send(RListOld).then(message => {
-      message.react("🔼");
-      var messageId = 0;
-
-      function addo(reaction, user) {
-        if (user.bot) {
-          messageId = message.id;
-          return;
-        }
-        if (!user.bot && RcheckOn && reaction.message.id === messageId) {
-          ReactuserList.push(user.username);
-          var RListB = ReactuserList.join("\n");
-          var RListNew = new Discord.MessageEmbed()
-            .setTitle(bosyuTitle)
-            .setDescription(RListB);
-          message.edit(RListNew);
-        }
-      }
-
-      function remobe(reaction, user) {
-        if (RcheckOn && reaction.message.id === messageId) {
-          ReactuserList.splice(ReactuserList.indexOf(user.username), "1");
-          var RListB = ReactuserList.join("\n");
-          var RListNew = new Discord.MessageEmbed()
-            .setTitle(bosyuTitle)
-            .setDescription(RListB);
-          message.edit(RListNew);
-        }
-      }
-
-      function stpo(message) {
-        if (command === "boend") {
-          if (message.author.bot) return;
-          RcheckOn = false;
-          ReactuserList.length = 0;
-          client.removeListener("messageReactionAdd", addo);
-          client.removeListener("messageReactionRemove", remobe);
-          client.removeListener("message", stpo);
-          message.channel.send("募集を停止します");
-        }
-      }
-
-      client.on("messageReactionAdd", addo);
-
-      client.on("messageReactionRemove", remobe);
-
-      client.on("message", stpo);
-    });
-    return;
-  }
 
   //ここまで
 });
