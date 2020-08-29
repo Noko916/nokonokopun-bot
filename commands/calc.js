@@ -23,4 +23,6 @@ exports.run = (_client, message, args, _tools) => {
     .addField("Output", `\`\`\`js\n${resp}\`\`\``);
 
     message.channel.send(embed);
+    
+    console.log(`${args.join(' ')} = ${resp}`);
 }
