@@ -5,6 +5,7 @@ const EmbedHelp = new Discord.MessageEmbed()
   .addField(".bank", "にこぷん・隠れ家のバンクへのリンク")
   .addField(".bga", "BoardGameArenaのリンク")
   .addField(".blog", "にこぷん運営のブログへのリンク")
+  .addField(".calc [???]", "計算をします")
   .addField(".comyu", "各コミュリンク")
   .addField(
     ".dice [?]d[??]",
