@@ -1,7 +1,7 @@
-const math = require('math.js');
+const math = require('mathjs');
 const Discord = require('discord.js');
 
-exports.run = (client, message, args, tools) => {
+exports.run = (_client, message, args, _tools) => {
 
     if (!args[0]) return message.channel.send("計算式を入力してください")
 
