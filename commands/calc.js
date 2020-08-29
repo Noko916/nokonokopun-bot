@@ -1,26 +1,24 @@
-const math = require('math.js');
 const Discord = require('discord.js');
+const math = require('mathjs');
 
-exports.run = (_client, message, args, _tools) => {
+exports.run = (client, message, args, tools) => {
 
-    if (!args[0]) return message.channel.send("計算式を入力してください")
+  if(!args[0]) return message.channel.send('Please input a calculation.')
 
-    let resp;
-    
-    //処理
-    try{
-        resp = math.evaluate(args.join(' '));
-    } catch (e) {
-        console.log(e);
-        return message.channel.send("有効な計算式を入力してください");
-    }
+  let resp;
+  try {
+    resp = math.evaluate(args.join(' '))
+  } catch (e) {
+    return message.channel.send('Please enter a valid calculation.')
+  }
 
-    //Finally
-    const embed = new Discord.MessageEmbed()
-    .setColor(0xffffff)
-    .setTitle("Calc")
-    .addField("式", `\`\`\`js\n${args.join(' ')}\`\`\``)
-    .addField("計算結果", `\`\`\`js\n${resp}\`\`\``)
 
-    message.channel.send(embed);
+  const embed = new Discord.RichEmbed()
+    .setColor(0x808080)
+    .setTitle('Math Calculation')
+    .addField('Input', `\`\`\`css\n${args.join('')}\`\`\``)
+    .addField('Output', `\`\`\`css\n${resp}\`\`\``)
+
+message.channel.send(embed);
+
 }
