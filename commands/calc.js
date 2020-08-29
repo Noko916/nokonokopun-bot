@@ -11,6 +11,7 @@ exports.run = (_client, message, args, _tools) => {
     try{
         resp = math.evaluate(args.join(' '));
     } catch (e) {
+        console.log(e);
         return message.channel.send("有効な計算式を入力してください");
     }
 
