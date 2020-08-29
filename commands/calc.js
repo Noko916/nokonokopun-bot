@@ -17,10 +17,10 @@ exports.run = (_client, message, args, _tools) => {
 
     //Finally
     const embed = new Discord.MessageEmbed()
-    .setColor(0xffffff)
+    .setColor(1752220)
     .setTitle("Calc")
     .addField("Input", `\`\`\`js\n${args.join(' ')}\`\`\``)
-    .addField("Output", `\`\`\`js\n${resp}\`\`\``)
+    .addField("Output", `\`\`\`js\n${resp}\`\`\``);
 
     message.channel.send(embed);
 }
