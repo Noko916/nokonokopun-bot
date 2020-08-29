@@ -9,7 +9,7 @@ exports.run = (client, message, args, tools) => {
     
     //処理
     try{
-        resp = math.evalDependencies(args.join(' '));
+        resp = math.eval(args.join(' '));
     } catch (e) {
         return message.channel.send("有効な計算式を入力してください");
     }
