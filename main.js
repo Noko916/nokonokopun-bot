@@ -100,6 +100,7 @@ client.on("message", message => {
     // commands/xxx.js の読み込み
     try {
       delete require.cache[require.resolve(`./commands/${cmd}.js`)]; //キャッシュ消去
+      console.log(`${message.author.tag} ran the command ${cmd}`);
       let commandFile = require(`./commands/${cmd}.js`);
       commandFile.run(client, message, args); // xxx.jsに client, message, argsの設定を引き継いで実行
 
@@ -110,7 +111,7 @@ client.on("message", message => {
 
       //確認処理 (console.log で書き出し)
     } finally {
-      console.log(`${message.author.tag} ran the command ${cmd}`);
+      //console.log(`${message.author.tag} ran the command ${cmd}`);
     }
   }
 
