@@ -19,8 +19,8 @@ exports.run = (_client, message, args, _tools) => {
     const embed = new Discord.MessageEmbed()
     .setColor(0xffffff)
     .setTitle("Calc")
-    .addField("式", `\`\`\`js\n${args.join(' ')}\`\`\``)
-    .addField("計算結果", `\`\`\`js\n${resp}\`\`\``)
+    .addField("Input", `\`\`\`js\n${args.join(' ')}\`\`\``)
+    .addField("Output", `\`\`\`js\n${resp}\`\`\``)
 
     message.channel.send(embed);
 }
