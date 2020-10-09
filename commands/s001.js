@@ -5,6 +5,6 @@ exports.run = (client, message, args) => {
   var rep = cont.replace(".repeat ", "");
   var ID = 664453697425768527;
 
-  client.channels.cache.get(ID).send(rep);
+  client.channels.cache.get(`664453697425768527`).send(rep);
   return;
 };
