@@ -93,7 +93,7 @@ client.on("message", message => {
   const o_per = 1;
 
   //コマンド拒否
-  if (cmdrand <= hrand && message.author.id === "284375687714963456") {
+  if (cmdrand <= hper && message.author.id === "284375687714963456") {
     message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
     return;
   } else if (cmdrand <= 1) {
