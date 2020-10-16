@@ -89,9 +89,11 @@ client.on("message", message => {
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
+  const hrand = 91;
+
   //コマンド拒否
-  if (cmdrand <= 49 && message.author.id === "284375687714963456") {
-    message.channel.send("いやです！:smirk:");
+  if (cmdrand <= hrand && message.author.id === "284375687714963456") {
+    message.channel.send(`いやです！:smirk:　\`${hrand}%\``);
     return;
   } else if (cmdrand <= 1) {
     message.channel.send("いやです:smirk:");
