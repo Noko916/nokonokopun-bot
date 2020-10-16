@@ -13,6 +13,9 @@ const client = new Discord.Client();
 
 const prefix = ".";
 
+const h_per = 91;
+const o_per = 1;
+
 client.on("ready", () => {
   client.user.setActivity("Civ Ⅹ", { type: "PLAYING" });
   console.log("入っているサーバー:");
@@ -88,9 +91,6 @@ client.on("message", message => {
   let cmd = args.shift().toLowerCase();
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
-
-  const h_per = 91;
-  const o_per = 1;
 
   //コマンド拒否
   if (cmdrand <= hper && message.author.id === "284375687714963456") {
