@@ -13,7 +13,10 @@ const client = new Discord.Client();
 
 const prefix = ".";
 
-const h_per = 91;
+// ｈ氏コマンド拒否率
+const h_per = 9;
+
+// 一般コマンド拒否率
 const o_per = 1;
 
 client.on("ready", () => {
