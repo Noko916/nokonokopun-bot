@@ -14,7 +14,7 @@ const client = new Discord.Client();
 const prefix = ".";
 
 // ｈ氏コマンド拒否率
-const h_per = 35;
+const h_per = 71;
 
 // 一般コマンド拒否率
 const o_per = 1;
