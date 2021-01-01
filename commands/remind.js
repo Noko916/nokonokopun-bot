@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
 
     db.set(`remind.${message.author.id}`, Date.now() + ms(remindtime))
 
-    message.channel.send("OK! `"+ remindtime + "` 後に `" + reason + "` をお知らせします");
+    message.channel.send("OK! `"+ reptime + "` 後に `" + reason + "` をお知らせします");
 
     const interval = setInterval(function(){
 
