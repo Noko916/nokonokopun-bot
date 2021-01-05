@@ -95,8 +95,14 @@ client.on("message", message => {
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
+  // ある人用
+  if (message.author.id === "257119912043085824" && cmd.startsWith('m')){
+    message.channel.send("えーっと...`.mrigu`かな？");
+    let commandFile = require(`./commands/mrigu.js`);
+    commandFile.run(client, message, args);
+  }
   //コマンド拒否
-  if (cmdrand <= h_per && message.author.id === "284375687714963456") {
+  else if (cmdrand <= h_per && message.author.id === "284375687714963456") {
     message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
     return;
   } else if (cmdrand <= o_per) {
