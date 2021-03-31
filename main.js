@@ -77,7 +77,7 @@ client.on("message", message => {
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
 
-  if (!message.author.id(221360357191581697)) {
+  if (!message.author.id === "221360357191581697") {
     message.channel.send("メンテ中です");
     return;
   }
