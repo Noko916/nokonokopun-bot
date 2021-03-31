@@ -116,7 +116,7 @@ client.on("message", message => {
 
       //エラー処理
     } catch (e) {
-      message.channel.send("エラー: <@221360357191581697> ログ見て！！！！")
+      message.channel.send("エラー: <@221360357191581697> ログ見て！！！")
       console.log(e);
 
       //確認処理 (console.log で書き出し)
