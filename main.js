@@ -94,7 +94,7 @@ client.on("message", message => {
 
   //const cmd = args.shift().toLowerCase();
   const cmd = client.commands.get(cmdName)
-    || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(cmdName));
+    || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(cmdName));
 
   if (!cmd) return message.channel.send(`\`${prefix}${cmdName}\` なんてコマンドないよ！！`)
 
