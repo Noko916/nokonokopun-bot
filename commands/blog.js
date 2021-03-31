@@ -12,7 +12,6 @@ const Embedblog = new Discord.MessageEmbed()
 module.exports = {
   name: "blog",
   description: "運営チームのブログを紹介します",
-  aliases: [],
 
   async execute(client, message, args) {
     message.channel.send(Embedblog);

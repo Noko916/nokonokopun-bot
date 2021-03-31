@@ -3,7 +3,6 @@ const Discord = require("discord.js");
 module.exports = {
     name: "bga",
     description: "BGAのリンクを貼るだけ",
-    aliases: [],
 
     async execute(client, message, args) {
 

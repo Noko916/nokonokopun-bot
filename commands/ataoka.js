@@ -11,7 +11,6 @@ function sleep(waitSec) {
 module.exports = {
   name: "ataoka",
   description: "あたおか...?",
-  aliases: [],
 
   async execute(client, message, args) {
     sleep(0)
