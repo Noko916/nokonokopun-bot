@@ -1,3 +1,6 @@
+/*
+const Discord = require("discord.js");
+
 const EmbedHelp = new Discord.MessageEmbed()
   .setTitle("コマンド一覧")
   .addField(".bank", "にこぷん・隠れ家のバンクへのリンク")
@@ -21,7 +24,7 @@ const EmbedHelp = new Discord.MessageEmbed()
 
   .setColor(1752220)
   .setFooter("これ以外にもあるよ！", "");
-/*
+
 exports.run = (client, message, args) => {
   message.channel.send(EmbedHelp);
   return;
@@ -33,7 +36,7 @@ module.exports = {
   description: "コマンドの使い方を表示します",
   aliases: ["halp", "welp", "walp", "command", "commands", "cmd"],
 
-  async execute(cliend, message, args){
+  async execute(Discord, client, message, args){
     const data = [];
     const { commands } = message.client;
 
