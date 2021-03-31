@@ -15,7 +15,7 @@ const h_per = 26;
 const o_per = 1;
 
 for (const file of cmds) {
-  const cmd = require(`./cmds/${file}`);
+  const cmd = require(`./commands/${file}`);
 
   client.commands.set(cmd.name, cmd);
 }
@@ -79,7 +79,8 @@ client.on("message", message => {
 
   if (message.content.startsWith(prefix)) message.channel.send("メンテ中です"); return;
 
-    let msg = message.content.toUpperCase();
+
+  let msg = message.content.toUpperCase();
   let sender = message.author;
 
   let args = message.content
