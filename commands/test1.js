@@ -1,8 +1,13 @@
 const Discord = require("discord.js");
 
-exports.run = (client, message, args) => {
+module.exports = {
+  name: "test1",
+  description: "テスト用",
 
-  //here
-  
-  return;
+  async execute(client, message, args) {
+
+    //here
+
+    return;
+  },
 };

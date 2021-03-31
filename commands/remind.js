@@ -1,36 +1,42 @@
 const Discord = require("discord.js");
-const ms      = require("ms");
-const db      = require("quick.db");
+const ms = require("ms");
+const db = require("quick.db");
 
-exports.run = (client, message, args) => {
-    
-    let remindtime  = args[0];
-    let reason      = args.slice(1).join(" ");
+module.exports = {
+    name: "remind",
+    description: "指定の時間にメンションを飛ばします",
+    aliases: ["timer", "rem"],
 
-    let reptime     = remindtime;
+    async execute(client, message, args) {
 
-    reptime.replace("d", "日 ");
-    reptime.replace("h", "時間 ");
-    reptime.replace("m", "分 ");
-    reptime.replace("s", "秒");
+        let remindtime = args[0];
+        let reason = args.slice(1).join(" ");
 
-    if(!remindtime) return message.reply(":x: 時間を入力してください `例: .remind 10s aiueo`");
-    if(!reason)     return message.reply(":x: 内容を入力してください `例: .remind 10s aiueo`");
+        let reptime = remindtime;
 
-    db.set(`remind.${message.author.id}`, Date.now() + ms(remindtime))
+        reptime.replace("d", "日 ");
+        reptime.replace("h", "時間 ");
+        reptime.replace("m", "分 ");
+        reptime.replace("s", "秒");
 
-    message.channel.send("OK! `"+ reptime + "` 後に `" + reason + "` をお知らせします");
+        if (!remindtime) return message.reply(":x: 時間を入力してください `例: .remind 10s aiueo`");
+        if (!reason) return message.reply(":x: 内容を入力してください `例: .remind 10s aiueo`");
 
-    const interval = setInterval(function(){
+        db.set(`remind.${message.author.id}`, Date.now() + ms(remindtime))
 
-        if(Date.now() > db.fetch(`remind.${message.author.id}`)){
-            db.delete(`remind.${message.author.id}`);
-            message.channel.send(`**Remind: **[${message.author}]\n> ${reason}`)
-                           .catch(e => console.log(e));
-            clearInterval(interval);
-        }
+        message.channel.send("OK! `" + reptime + "` 後に `" + reason + "` をお知らせします");
 
-    }, 1000);
+        const interval = setInterval(function () {
 
-    return;
+            if (Date.now() > db.fetch(`remind.${message.author.id}`)) {
+                db.delete(`remind.${message.author.id}`);
+                message.channel.send(`**Remind: **[${message.author}]\n> ${reason}`)
+                    .catch(e => console.log(e));
+                clearInterval(interval);
+            }
+
+        }, 1000);
+
+        return;
+    },
 };

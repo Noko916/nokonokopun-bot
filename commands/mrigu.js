@@ -7,7 +7,13 @@ const EmbedMrigu = new Discord.MessageEmbed()
   )
   .setColor(1752220);
 
-exports.run = (client, message, args) => {
-  message.channel.send(EmbedMrigu);
-  return;
+module.exports = {
+  name: "mrigu",
+  description: "茶の間Mリーグの集計シートを貼ります",
+  aliases: ["m", "mreague"],
+
+  async execute(client, message, args) {
+    message.channel.send(EmbedMrigu);
+    return;
+  },
 };

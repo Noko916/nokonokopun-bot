@@ -1,6 +1,10 @@
 const Discord = require("discord.js");
+module.exports = {
+  name: "yotoo",
+  description: "Yotoo!",
 
-exports.run = (client, message, args) => {
-  message.channel.send("Yahoo!");
-  return;
+  async execute(client, message, args) {
+    message.channel.send("Yahoo!");
+    return;
+  },
 };
