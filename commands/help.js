@@ -1,5 +1,3 @@
-const Discord = require("discord.js");
-
 const EmbedHelp = new Discord.MessageEmbed()
   .setTitle("コマンド一覧")
   .addField(".bank", "にこぷん・隠れ家のバンクへのリンク")
@@ -28,3 +26,39 @@ exports.run = (client, message, args) => {
   message.channel.send(EmbedHelp);
   return;
 };
+
+module.exports = {
+  name: "help",
+  description: "コマンドの使い方を表示します",
+  aliases: ["halp", "welp", "walp", "command", "commands", "cmd"],
+
+  async execute(cliend, message, args){
+    const data = [];
+    const { commands } = message.client;
+
+    if (!args.length) {
+        data.push("使えるコマンドはこちら");
+        data.push(`${prefix}` + commands.map(c => c.name).join(`\n${prefix}`));
+        data.push(`\n\`${prefix}help [command name]\` で詳細を表示します`)
+        message.channel.send(data);
+
+        return;
+    }
+
+    const name = args[0];
+    const cmd = commands.get(name)
+        || commands.find(c => c.aliases && c.aliases.includes(name));
+
+    if (!cmd) {
+      message.reply(`${name} なんてコマンドはないよ！`)
+
+        return;
+    }
+
+    data.push(`Name: ${cmd.name}`);
+    if (cmd.description) data.push(`Description: ${cmd.description}`);
+    if (cmd.aliases) data.push(`Aliases: ${cmd.aliases.join(', ')}`);
+
+    message.channel.send(data);
+  }
+}
