@@ -1,8 +1,13 @@
 const Discord = require("discord.js");
 
-exports.run = (client, message, args) => {
-  
-    message.channel.send("bgaどーーーん\nhttps://ja.boardgamearena.com/");
-    return;
-  
+module.exports = {
+    name: "bga",
+    description: "BGAのリンクを貼るだけ",
+    aliases: [],
+
+    async execute(client, message, args) {
+
+        message.channel.send("bgaどーーーん\nhttps://ja.boardgamearena.com/");
+        return;
+    }
 };
