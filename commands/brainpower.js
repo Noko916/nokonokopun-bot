@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
   name: "brainpower",
   description: "O-oooooooooooooooooooooooooooooooooooooooooooooooooooo",
-  aliases: ["O-oooo", "AAAAE", "NOMA"],
+  aliases: ["o-oooo", "aaaae", "noma"],
 
   async execute(client, message, args) {
 
