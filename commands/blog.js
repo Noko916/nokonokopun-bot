@@ -12,8 +12,12 @@ const Embedblog = new Discord.MessageEmbed()
 module.exports = {
   name: "blog",
   description: "運営チームのブログを紹介します",
+  aliases: ["burogu"],
 
   async execute(client, message, args) {
+
+    if(message.content == "burogu") message.channel.send(`もしかして... \`.blog\`?`);
+
     message.channel.send(Embedblog);
     return;
   }
