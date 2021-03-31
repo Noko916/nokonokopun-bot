@@ -1,31 +1,24 @@
-// Response for Uptime Robot
-const http = require("http");
-http
-  .createServer(function (request, response) {
-    response.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
-    response.end("Discord bot は 動いています\n");
-  })
-  .listen(3000);
-
 // Discord bot implements
 const Discord = require("discord.js");
-const client = new Discord.Client();
-
+const fs = require('fs');
 const prefix = ".";
 
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+const cmds = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
+
 // ｈ氏コマンド拒否率
-const h_per = 76;
+const h_per = 26;
 
 // 一般コマンド拒否率
 const o_per = 1;
 
-client.on("ready", () => {
-  client.user.setActivity("Civ Ⅹ", { type: "PLAYING" });
-  console.log("入っているサーバー:");
-  var ServerList = client.guilds.cache.map(a => a.name).join(" / ");
-  console.log("[ " + ServerList + " ]");
-  console.log("Ready!");
-});
+for (const file of cmds) {
+  const cmd = require(`./cmds/${file}`);
+
+  client.commands.set(cmd.name, cmd);
+}
 
 client.on("message", async message => {
   const re = new RegExp(
@@ -84,19 +77,28 @@ client.on("message", message => {
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
 
-  let msg = message.content.toUpperCase();
+  if (message.content.startsWith(prefix)) message.channel.send("メンテ中です");
+
+    let msg = message.content.toUpperCase();
   let sender = message.author;
 
   let args = message.content
     .slice(prefix.length)
     .trim()
     .split(` `);
-  let cmd = args.shift().toLowerCase();
+
+  const cmdName = args.shift().toLowerCase();
+
+  //const cmd = args.shift().toLowerCase();
+  const cmd = client.commands.get(cmdName)
+    || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(cmdName));
+
+  if (!cmd) return message.channel.send(`\`${prefix}${cmdName}\` なんてコマンドないよ！`)
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   // ある人用
-  if (message.author.id === "257119912043085824" && cmd.startsWith('m')){
+  if (message.author.id === "257119912043085824" && cmd.startsWith('m')) {
     message.channel.send("えーっと...`.mrigu`かな？");
     let commandFile = require(`./commands/mrigu.js`);
     commandFile.run(client, message, args);
@@ -131,9 +133,12 @@ client.on("message", message => {
   //ここまで
 });
 
-if (process.env.DISCORD_BOT_TOKEN == undefined) {
-  console.log("please set ENV: DISCORD_BOT_TOKEN");
-  process.exit(0);
-}
+client.on("ready", () => {
+  client.user.setActivity("メンテナンス", { type: "PLAYING" });
+  console.log("入っているサーバー:");
+  var ServerList = client.guilds.cache.map(a => a.name).join(" / ");
+  console.log("[ " + ServerList + " ]");
+  console.log("Ready!");
+});
 
 client.login(process.env.DISCORD_BOT_TOKEN);
