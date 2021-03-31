@@ -99,8 +99,10 @@ client.on("message", message => {
   const cmd = client.commands.get(cmdName)
     || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(cmdName));
 
-  if (!cmd) return message.channel.send(`\`${prefix}${cmdName}\` なんてコマンドないよ！！`)
-
+  if (!cmd) {
+    console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
+    return message.channel.send(`\`${prefix}${cmdName}\` なんてコマンドないよ！！`)
+  }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否

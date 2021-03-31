@@ -1,6 +1,4 @@
 /*
-const Discord = require("discord.js");
-
 const EmbedHelp = new Discord.MessageEmbed()
   .setTitle("コマンド一覧")
   .addField(".bank", "にこぷん・隠れ家のバンクへのリンク")
@@ -32,39 +30,44 @@ exports.run = (client, message, args) => {
 */
 
 const { prefix } = require('../config.json');
+const Discord = require("discord.js");
 
 module.exports = {
   name: "help",
   description: "コマンドの使い方を表示します",
-  aliases: ["halp", "welp", "walp", "command", "commands", "cmd"],
+  aliases: ["halp", "welp", "walp", "command", "commands", "cmd", "herupu"],
 
-  async execute(client, message, args){
-    const data = [];
+  async execute(client, message, args) {
+    const EmbedHelp = new Discord.MessageEmbed().setColor(1752220);
     const { commands } = message.client;
 
     if (!args.length) {
-        data.push("使えるコマンドはこちら");
-        data.push(`${prefix}` + commands.map(c => c.name).join(`\n${prefix}`));
-        data.push(`\n\`${prefix}help [command name]\` で詳細を表示します`)
-        message.channel.send(data);
 
-        return;
+      EmbedHelp
+        .setTitle("使えるコマンドはこちら")
+        .setColor(1752220)
+
+        .setDescription(`${prefix}` + commands.map(c => c.name).join(`\n${prefix}`))
+        .setFooter(`\`\n\`${prefix}help [command name]\` で詳細を表示します`)
+      message.channel.send(EmbedHelp);
+
+      return;
     }
 
     const name = args[0];
     const cmd = commands.get(name)
-        || commands.find(c => c.aliases && c.aliases.includes(name));
+      || commands.find(c => c.aliases && c.aliases.includes(name));
 
     if (!cmd) {
       message.reply(`${name} なんてコマンドはないよ！`)
 
-        return;
+      return;
     }
 
-    data.push(`Name: ${cmd.name}`);
-    if (cmd.description) data.push(`Description: ${cmd.description}`);
-    if (cmd.aliases) data.push(`Aliases: ${cmd.aliases.join(', ')}`);
+    EmbedHelp.setTitle(`${prefix}${cmd.name}`);
+    if (cmd.description) EmbedHelp.addField(`Description`, cmd.description);
+    if (cmd.aliases) EmbedHelp.addField(`Aliases`, cmd.aliases.join(', '));
 
-    message.channel.send(data);
+    message.channel.send(EmbedHelp);
   }
 }
