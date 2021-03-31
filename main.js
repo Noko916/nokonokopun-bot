@@ -77,7 +77,7 @@ client.on("message", message => {
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
 
-  if (message.content.startsWith(prefix)) message.channel.send("メンテ中です");
+  if (message.content.startsWith(prefix)) message.channel.send("メンテ中です"); return;
 
     let msg = message.content.toUpperCase();
   let sender = message.author;
