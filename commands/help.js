@@ -45,10 +45,9 @@ module.exports = {
 
       EmbedHelp
         .setTitle("使えるコマンドはこちら")
-        .setColor(1752220)
 
         .setDescription(`${prefix}` + commands.map(c => c.name).join(`\n${prefix}`))
-        .setFooter(`\`\n\`${prefix}help [command name]\` で詳細を表示します`)
+        .setFooter(`${prefix}help [command name]   で詳細を表示します`);
       message.channel.send(EmbedHelp);
 
       return;
@@ -66,7 +65,7 @@ module.exports = {
 
     EmbedHelp.setTitle(`${prefix}${cmd.name}`);
     if (cmd.description) EmbedHelp.addField(`Description`, cmd.description);
-    if (cmd.aliases)     EmbedHelp.addField(`Aliases`, cmd.aliases.join(', '));
+    if (cmd.aliases)     EmbedHelp.addField(`Aliases`,     cmd.aliases.join(', '));
 
     message.channel.send(EmbedHelp);
   }
