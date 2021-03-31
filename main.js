@@ -9,7 +9,7 @@ client.commands = new Discord.Collection();
 const cmds = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
 
 // ｈ氏コマンド拒否率
-const h_per = 26;
+const h_per = 25;
 
 // 一般コマンド拒否率
 const o_per = 1;
@@ -77,8 +77,10 @@ client.on("message", message => {
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
 
-  if (message.content.startsWith(prefix)) message.channel.send("メンテ中です"); return;
-
+  if (!message.author.id(221360357191581697)) {
+    message.channel.send("メンテ中です");
+    return;
+  }
 
   let msg = message.content.toUpperCase();
   let sender = message.author;
@@ -98,14 +100,8 @@ client.on("message", message => {
 
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
-  // ある人用
-  if (message.author.id === "257119912043085824" && cmd.startsWith('m')) {
-    message.channel.send("えーっと...`.mrigu`かな？");
-    let commandFile = require(`./commands/mrigu.js`);
-    commandFile.run(client, message, args);
-  }
   //コマンド拒否
-  else if (cmdrand <= h_per && message.author.id === "284375687714963456") {
+ if (cmdrand <= h_per && message.author.id === "284375687714963456") {
     message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
     return;
   } else if (cmdrand <= o_per) {
@@ -116,13 +112,12 @@ client.on("message", message => {
     try {
       delete require.cache[require.resolve(`./commands/${cmd}.js`)]; //キャッシュ消去
       console.log(`${message.author.tag} ran the command ${cmd}`);
-      let commandFile = require(`./commands/${cmd}.js`);
-      commandFile.run(client, message, args); // xxx.jsに client, message, argsの設定を引き継いで実行
+      cmd.execute(client, message, args);
 
       //エラー処理
     } catch (e) {
-      console.log(e.stack);
-      message.channel.send("ぶー");
+      message.channel.send("エラー: <@221360357191581697> ログ見て！！！！")
+      console.log(e);
 
       //確認処理 (console.log で書き出し)
     } finally {
