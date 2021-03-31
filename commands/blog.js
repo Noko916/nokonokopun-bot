@@ -16,7 +16,7 @@ module.exports = {
 
   async execute(client, message, args) {
 
-    if(message.content == "burogu") message.channel.send(`もしかして... \`.blog\`?`);
+    if(message.content == ".burogu") message.channel.send(`もしかして... \`.blog\`?`);
 
     message.channel.send(Embedblog);
     return;
