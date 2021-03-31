@@ -111,7 +111,7 @@ client.on("message", message => {
     // commands/xxx.js の読み込み
     try {
       //delete require.cache[require.resolve(`./commands/${cmd}.js`)]; //キャッシュ消去
-      console.log(`${message.author.tag} ran the command ${cmd}`);
+      console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
       cmd.execute(client, message, args);
 
       //エラー処理

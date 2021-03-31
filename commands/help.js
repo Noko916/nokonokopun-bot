@@ -21,11 +21,12 @@ const EmbedHelp = new Discord.MessageEmbed()
 
   .setColor(1752220)
   .setFooter("これ以外にもあるよ！", "");
-
+/*
 exports.run = (client, message, args) => {
   message.channel.send(EmbedHelp);
   return;
 };
+*/
 
 module.exports = {
   name: "help",
