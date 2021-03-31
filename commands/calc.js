@@ -1,28 +1,34 @@
 const math = require('mathjs');
 const Discord = require('discord.js');
 
-exports.run = (_client, message, args, _tools) => {
+module.exports = {
+    name: "calc",
+    description: "計算して結果を表示します 長さ,重さ等も計算できます",
+    aliases: ["dentaku", "keisan", "calculator", "calculation"],
 
-    if (!args[0]) return message.channel.send("計算式を入力してください")
+    async execute(_client, message, args, _tools) {
 
-    let resp;
-    
-    //処理
-    try{
-        resp = math.evaluate(args.join(' '));
-    } catch (e) {
-        console.log(e);
-        return message.channel.send("有効な計算式を入力してください");
-    }
+        if (!args[0]) return message.channel.send("計算式を入力してください")
 
-    //Finally
-    const embed = new Discord.MessageEmbed()
-    .setColor(1752220)
-    .setTitle("Calc")
-    .addField("Input", `\`\`\`js\n${args.join(' ')}\`\`\``)
-    .addField("Output", `\`\`\`js\n${resp}\`\`\``);
+        let resp;
 
-    message.channel.send(embed);
-    
-    console.log(`${args.join(' ')} = ${resp}`);
+        //処理
+        try {
+            resp = math.evaluate(args.join(' '));
+        } catch (e) {
+            console.log(e);
+            return message.channel.send("有効な計算式を入力してください");
+        }
+
+        //Finally
+        const embed = new Discord.MessageEmbed()
+            .setColor(1752220)
+            .setTitle("Calc")
+            .addField("計算式", `\`\`\`js\n${args.join(' ')}\`\`\``)
+            .addField("結果", `\`\`\`js\n${resp}\`\`\``);
+
+        message.channel.send(embed);
+
+        console.log(`${args.join(' ')} = ${resp}`);
+    },
 }

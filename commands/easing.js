@@ -1,7 +1,13 @@
 const Discord = require("discord.js");
 
-exports.run = (client, message, args) => {
-    message.channel.send("https://aketama.work/wp-content/uploads/2018/09/easing-1.png");
+module.exports = {
+    name: "easing",
+    description: "aviutl のイージング表を貼ります",
+    aliases: ["aviutl"],
 
-    return;
+    async execute(client, message, args) {
+        message.channel.send("https://aketama.work/wp-content/uploads/2018/09/easing-1.png");
+
+        return;
+    },
 }
