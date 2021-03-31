@@ -110,7 +110,7 @@ client.on("message", message => {
   } else {
     // commands/xxx.js の読み込み
     try {
-      delete require.cache[require.resolve(`./commands/${cmd}.js`)]; //キャッシュ消去
+      //delete require.cache[require.resolve(`./commands/${cmd}.js`)]; //キャッシュ消去
       console.log(`${message.author.tag} ran the command ${cmd}`);
       cmd.execute(client, message, args);
 
