@@ -66,7 +66,7 @@ module.exports = {
 
     EmbedHelp.setTitle(`${prefix}${cmd.name}`);
     if (cmd.description) EmbedHelp.addField(`Description`, cmd.description);
-    if (cmd.aliases) EmbedHelp.addField(`Aliases`, cmd.aliases.join(', '));
+    if (cmd.aliases)     EmbedHelp.addField(`Aliases`, cmd.aliases.join(', '));
 
     message.channel.send(EmbedHelp);
   }
