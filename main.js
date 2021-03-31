@@ -1,7 +1,7 @@
 // Discord bot implements
 const Discord = require("discord.js");
 const fs = require('fs');
-const prefix = ".";
+const { prefix } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -77,10 +77,13 @@ client.on("message", message => {
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
 
+
+  /*
   if (!message.author.id === "221360357191581697") {
     message.channel.send("メンテ中です");
     return;
   }
+  */
 
   let msg = message.content.toUpperCase();
   let sender = message.author;
@@ -130,7 +133,7 @@ client.on("message", message => {
 });
 
 client.on("ready", () => {
-  client.user.setActivity("メンテナンス", { type: "PLAYING" });
+  client.user.setActivity("Civ ⅩⅤ", { type: "PLAYING" });
   console.log("入っているサーバー:");
   var ServerList = client.guilds.cache.map(a => a.name).join(" / ");
   console.log("[ " + ServerList + " ]");
