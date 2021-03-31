@@ -101,7 +101,7 @@ client.on("message", message => {
 
   if (!cmd) {
     console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
-    return message.channel.send(`\`${prefix}${cmdName}\` なんてコマンドないよ！！`)
+    return message.channel.send(`ぶー`)
   }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 

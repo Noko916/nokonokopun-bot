@@ -27,7 +27,7 @@ module.exports = {
       || commands.find(c => c.aliases && c.aliases.includes(name));
 
     if (!cmd) {
-      message.reply(`${name} なんてコマンドはないよ！`)
+      message.reply(`\`${prefix}${name}}\` なんてコマンドないよ！！`)
 
       return;
     }
