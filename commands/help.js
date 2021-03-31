@@ -36,7 +36,7 @@ module.exports = {
   description: "コマンドの使い方を表示します",
   aliases: ["halp", "welp", "walp", "command", "commands", "cmd"],
 
-  async execute(Discord, client, message, args){
+  async execute(client, message, args){
     const data = [];
     const { commands } = message.client;
 
