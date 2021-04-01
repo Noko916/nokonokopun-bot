@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { isNumeric } = require("mathjs");
+const { isInteger } = require("mathjs");
 const db = require("quick.db");
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
             if (args[2] >= 50) {
 
                 if (args[3] != "OK") {
-                    `値が50以上です\nそれでもいい場合は最後に \`OK\` を足して再度コマンドを打ち直してください`
+                    message.channel.send(`値が50以上です\nそれでもいい場合は最後に \`OK\` を足して再度コマンドを打ち直してください`);
                     return;
                 }
 
@@ -22,7 +22,7 @@ module.exports = {
 
             if (args[1] == "h" || args[1] == "o") {
 
-                if (isNumeric(args[2])) {
+                if (isInteger(args[2])) {
 
                     if (args[1] == "h") db.set('h_per', args[2]);
                     if (args[1] == "o") db.set('o_per', args[2]);
