@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports = {
   name: "repeat",
-  description: "同じ言葉を繰り返します",
+  description: "同じ言葉を繰り返します\n\`.repeat <***>\`",
   aliases: ["rep"],
 
   async execute(client, message, args) {

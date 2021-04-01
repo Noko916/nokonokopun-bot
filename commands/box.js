@@ -52,7 +52,7 @@ const EmbedBoxP = new Discord.MessageEmbed()
 
 module.exports = {
   name: "box",
-  description: "箱開け報酬の一覧を表示します",
+  description: `箱開け報酬の一覧を表示します\n\`.bank <b/s/g/g+/p>\``,
 
   async execute(client, message, args) {
     if (args[0] == "b" || args[0] == "B") {

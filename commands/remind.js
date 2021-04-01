@@ -4,7 +4,7 @@ const db = require("quick.db");
 
 module.exports = {
     name: "remind",
-    description: "指定の時間にメンションを飛ばします",
+    description: "指定の時間にメンションを飛ばします\n\`.remind <time> <reason>\`",
     aliases: ["timer", "rem"],
 
     async execute(client, message, args) {

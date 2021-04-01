@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "calc",
-    description: "計算して結果を表示します 長さ,重さ等も計算できます",
+    description: "計算して結果を表示します 長さ,重さ等も計算できます\n\`.calc <計算式>\`",
     aliases: ["dentaku", "keisan", "calculator", "calculation"],
 
     async execute(_client, message, args, _tools) {
