@@ -1,18 +1,13 @@
 // Discord bot implements
-const Discord = require("discord.js");
-const fs = require('fs');
-const { prefix } = require('./config.json');
+const Discord     = require("discord.js");
+const fs          = require('fs');
+const db          = require("quick.db");
+const { prefix }  = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const cmds = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
-
-// ｈ氏コマンド拒否率
-const h_per = 25;
-
-// 一般コマンド拒否率
-const o_per = 1;
 
 for (const file of cmds) {
   const cmd = require(`./commands/${file}`);
@@ -106,11 +101,11 @@ client.on("message", message => {
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否
- if (cmdrand <= h_per && message.author.id === "284375687714963456") {
-    message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
+ if (cmdrand <= db.get('h_per') && message.author.id === "284375687714963456") {
+    message.channel.send(`いやです！:smirk:　\`拒否率: ${db.get('h_per')}%\``);
     return;
-  } else if (cmdrand <= o_per) {
-    message.channel.send(`いやです:smirk:　\`拒否率: ${o_per}%\``);
+  } else if (cmdrand <= db.get('o_per')) {
+    message.channel.send(`いやです:smirk:　\`拒否率: ${db.get('o_per')}%\``);
     return;
   } else {
     // commands/xxx.js の読み込み
