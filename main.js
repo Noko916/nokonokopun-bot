@@ -101,10 +101,10 @@ client.on("message", message => {
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否
- if (cmdrand <= db.get('h_per') && message.author.id === "284375687714963456") {
+ if (cmdrand <= db.get('h_per') && message.author.id === "284375687714963456" && !message.content.includes("per")) {
     message.channel.send(`いやです！:smirk:　\`拒否率: ${db.get('h_per')}%\``);
     return;
-  } else if (cmdrand <= db.get('o_per')) {
+  } else if (cmdrand <= db.get('o_per') && !message.content.includes("per")) {
     message.channel.send(`いやです:smirk:　\`拒否率: ${db.get('o_per')}%\``);
     return;
   } else {
