@@ -1,11 +1,17 @@
 // Discord bot implements
 const Discord     = require("discord.js");
 const fs          = require('fs');
-const db          = require("quick.db");
 const { prefix }  = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
+let h_per = 25;
+let o_per = 1;
+
+
+let version = 110;
+
 
 const cmds = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
 
@@ -101,11 +107,11 @@ client.on("message", message => {
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否
- if (cmdrand <= db.get('h_per') && message.author.id === "284375687714963456" && !message.content.includes("per")) {
-    message.channel.send(`いやです！:smirk:　\`拒否率: ${db.get('h_per')}%\``);
+ if (cmdrand <= h_per && message.author.id === "284375687714963456" && !message.content.includes("per")) {
+    message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
     return;
-  } else if (cmdrand <= db.get('o_per') && message.author.id != "284375687714963456" && !message.content.includes("per")) {
-    message.channel.send(`いやです:smirk:　\`拒否率: ${db.get('o_per')}%\``);
+  } else if (cmdrand <= o_per && message.author.id != "284375687714963456" && !message.content.includes("per")) {
+    message.channel.send(`いやです:smirk:　\`拒否率: ${o_per}%\``);
     return;
   } else {
     // commands/xxx.js の読み込み
@@ -130,7 +136,7 @@ client.on("message", message => {
 });
 
 client.on("ready", () => {
-  client.user.setActivity("Civ ⅩⅤ", { type: "PLAYING" });
+  client.user.setActivity(`Civ ${version}`, { type: "PLAYING" });
   console.log("入っているサーバー:");
   var ServerList = client.guilds.cache.map(a => a.name).join(" / ");
   console.log("[ " + ServerList + " ]");

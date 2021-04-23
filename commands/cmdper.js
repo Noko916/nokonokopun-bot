@@ -61,7 +61,7 @@ module.exports = {
 */
         if(!args) return message.channel.send(`コマンド使用不可`);
 
-        if(args[0] == h) return message.channel.send(`${h_per}%`);
-        if(args[0] == o) return message.channel.send(`${o_per}%`);
+        if(args[0] == "h") return message.channel.send(`${h_per}%`);
+        if(args[0] == "o") return message.channel.send(`${o_per}%`);
     },
 };
