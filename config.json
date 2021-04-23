@@ -1,3 +1,7 @@
 {
-    "prefix": "."
+    "prefix": ".",
+    "h_per": 25,
+    "o_per": 1,
+
+    "version": 112
 }

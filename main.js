@@ -1,17 +1,10 @@
 // Discord bot implements
 const Discord     = require("discord.js");
 const fs          = require('fs');
-const { prefix }  = require('./config.json');
+const { prefix, h_per, o_per, version }  = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-
-let h_per = 25;
-let o_per = 1;
-
-
-let version = 111;
-
 
 const cmds = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
 

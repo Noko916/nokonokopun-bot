@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const { isInteger } = require("mathjs");
 const db = require("quick.db");
-const { h_per, o_per } = require('../main.js')
+const { h_per, o_per } = require('../config.json')
 
 module.exports = {
     name: "cmdper",
