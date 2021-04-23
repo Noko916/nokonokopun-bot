@@ -10,7 +10,7 @@ let h_per = 25;
 let o_per = 1;
 
 
-let version = 110;
+let version = 111;
 
 
 const cmds = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));

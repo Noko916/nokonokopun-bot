@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const { isInteger } = require("mathjs");
 const db = require("quick.db");
+const { h_per, o_per } = require('../main.js')
 
 module.exports = {
     name: "cmdper",
@@ -59,7 +60,7 @@ module.exports = {
 
         message.channel.send(`1つ目の値の指定\`(set/get)\`が間違っています\n\`.cmdper <set/get> <h/o> <percent> (OK)\` の形式で入力してください`);
 */
-        if(!args) return message.channel.send(`コマンド使用不可`);
+        if(!args[0]) return message.channel.send(`コマンド使用不可`);
 
         if(args[0] == "h") return message.channel.send(`${h_per}%`);
         if(args[0] == "o") return message.channel.send(`${o_per}%`);
