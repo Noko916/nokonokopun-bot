@@ -4,11 +4,10 @@ const db = require("quick.db");
 
 module.exports = {
     name: "cmdper",
-    description: `コマンド拒否率を変更,表示します\n\`.cmdper <h/o> <set/get> <percent> (OK)\``,
-    aliases: ["percent", "per"],
+    description: /*`コマンド拒否率を変更,表示します\n\`.cmdper <h/o> <set/get> <percent> (OK)\``*/ `使用不可`,
 
     async execute(client, message, args) {
-
+        /*
         if (args[0] == "set") {
 
             if (args[2] >= 50) {
@@ -59,7 +58,10 @@ module.exports = {
         }
 
         message.channel.send(`1つ目の値の指定\`(set/get)\`が間違っています\n\`.cmdper <set/get> <h/o> <percent> (OK)\` の形式で入力してください`);
+*/
+        if(!args) return message.channel.send(`コマンド使用不可`);
 
-        return;
+        if(args[0] == h) return message.channel.send(`${h_per}%`);
+        if(args[0] == o) return message.channel.send(`${o_per}%`);
     },
 };
