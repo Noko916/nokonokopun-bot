@@ -4,7 +4,7 @@ const { Period, EvTitle, DocLink, SheLink, EvAliases } = require('../config.json
 
 /* --- */
 
-const Embedblog = new Discord.MessageEmbed()
+const EmbedEvent = new Discord.MessageEmbed()
   .setTitle(`${Period} 「${EvTitle}」`)
   .setDescription(
     `[[詳細](${DocLink})]　[[シート](${SheLink})]`
@@ -17,7 +17,7 @@ module.exports = {
     aliases: ["event", `${EvAliases}`],
 
     async execute(client, message, args) {
-        message.channel.send("https://aketama.work/wp-content/uploads/2018/09/easing-1.png");
+        message.channel.send(EmbedEvent);
 
         return;
     },
