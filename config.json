@@ -1,7 +1,13 @@
 {
     "prefix": ".",
-    "h_per": 25,
+    "h_per": 10,
     "o_per": 1,
 
-    "version": 112
+    "Period"    : "2021.9 - 2022.1",
+    "EvTitle"   : "天使のような悪魔のジョーカー",
+    "DocLink"   : "https://docs.google.com/document/d/1TTh-u1jra4dDCjGbWxkIRNmPN8KkNx-bK2m7E1wOtZw/edit",
+    "SheLink"   : "https://docs.google.com/spreadsheets/d/1pwfdspx37U1tmoRFtOBgrl1Y5VsNkzmh62Pr0BRKTYI/edit",
+    "EvAliases" : "joker",
+
+    "version": 113
 }

@@ -6,7 +6,7 @@ module.exports = {
 
     async execute(client, message, args) {
 
-        message.channel.send("bgaどーーーん\nhttps://ja.boardgamearena.com/");
+        message.channel.send("BGA: \nhttps://ja.boardgamearena.com/");
         return;
     }
 };

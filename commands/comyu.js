@@ -8,7 +8,7 @@ const EmbedCommunity = new Discord.MessageEmbed()
   )
   .addField(
     "にこにこぷん",
-    "[一号店](https://com.nicovideo.jp/community/co1354820)　[二号店](https://com.nicovideo.jp/community/co2645213)　[三号店](https://com.nicovideo.jp/community/co3540952)"
+    "[１号店](https://com.nicovideo.jp/community/co1354820)　[２号店](https://com.nicovideo.jp/community/co2645213)　[３号店](https://com.nicovideo.jp/community/co3540952)　[４号店](https://com.nicovideo.jp/community/co5461840)　[５号店](https://com.nicovideo.jp/community/co5461847)"
   )
   .addField(
     "隠れ家",
