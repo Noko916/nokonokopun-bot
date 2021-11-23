@@ -18,45 +18,7 @@ for (const file of cmds) {
   client.commands.set(cmd.name, cmd);
 }
 
-const re = new RegExp(
-  "https://discord.com/channels/([0-9]{18})/([0-9]{18})/([0-9]{18})"
-);
-
-client.on("messageCreate", async message => {
-
-  const results = message.content.match(re);
-  if (!results) {
-    return;
-  }
-
-  console.log(`${message.author.tag} to cite [${message.content}]`);
-
-  const cont = message.content;
-  const rep = cont.replace("https://discord.com/channels/", "").split(`/`);
-
-  const channel_id = rep[1];
-  const message_id = rep[2];
-
-  const channel = client.channels.cache.get(channel_id);
-  if (!channel) {
-    return;
-  }
-
-  const PasteChannelId = message.channel.id;
-
-  const CiteMsg = channel.messages.fetch(message_id).then(cmsg => {
-
-    var CiteEmbed = new MessageEmbed()
-      .setAuthor(cmsg.member.displayName, cmsg.member.user.displayAvatarURL())
-      .setDescription(cmsg.content)
-      .setImage(cmsg.attachments.map(attachment => attachment.url)[0])
-      .setFooter(`${cmsg.guild.name} #${cmsg.channel.name}`, cmsg.guild.iconURL())
-      .setTimestamp(cmsg.createdTimestamp)
-      .setColor(1752220);
-
-    client.channels.cache.get(PasteChannelId).send({ embeds: [CiteEmbed] });
-  })
-});
+// ----------------------------------------------------------------------------------------------------
 
 client.on("messageCreate", message => {
   if (message.author.bot) return;
@@ -70,12 +32,7 @@ client.on("messageCreate", message => {
     return;
   }
 
-  //ここから
-
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
-
-  let msg = message.content.toUpperCase();
-  let sender = message.author;
 
   let args = message.content
     .slice(prefix.length)
@@ -93,34 +50,34 @@ client.on("messageCreate", message => {
   }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
-  //コマンド拒否
+  // コマンド拒否
   if (cmdrand <= h_per && message.author.id === "284375687714963456" && !message.content.includes("per")) {
     message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
     return;
+
   } else if (cmdrand <= o_per && message.author.id != "284375687714963456" && !message.content.includes("per")) {
     message.channel.send(`いやです:smirk:　\`拒否率: ${o_per}%\``);
     return;
+
   } else {
     // commands/xxx.js の読み込み
     try {
-      //delete require.cache[require.resolve(`./commands/${cmd}.js`)]; //キャッシュ消去
       console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
       cmd.execute(client, message, args);
 
-      //エラー処理
+      // エラー処理
     } catch (e) {
       message.channel.send("エラー: <@221360357191581697> ログ見て！！！")
       console.log(e);
-
-      //確認処理 (console.log で書き出し)
-    } finally {
-      //console.log(`${message.author.tag} ran the command ${cmd}`);
     }
   }
 
   return;
-  //ここまで
 });
+
+
+// ----------------------------------------------------------------------------------------------------
+
 
 client.on("ready", () => {
 
@@ -134,5 +91,9 @@ client.on("ready", () => {
   console.log("[ " + ServerList + " ]");
   console.log("Ready!");
 });
+
+
+// ----------------------------------------------------------------------------------------------------
+
 
 client.login(process.env.DISCORD_BOT_TOKEN);
