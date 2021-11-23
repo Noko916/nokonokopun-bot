@@ -38,7 +38,7 @@ client.on("messageCreate", async message => {
     return;
   }
 
-  const PasteChannelId = message.channels.Id;
+  const PasteChannelId = message.channel.id;
 
   channel.messages.fetch(message_id);
 
