@@ -30,8 +30,12 @@ client.on("messageCreate", async message => {
   }
 
   console.log(`${message.author.tag} to cite [${message.content}]`);
-  const channel_id = results[2];
-  const message_id = results[3];
+
+  const cont = message.content;
+  const rep = cont.replace("https://discord.com/channels/", "").split(`/`);
+
+  const channel_id = rep[1];
+  const message_id = rep[2];
 
   const channel = client.channels.cache.get(channel_id);
   if (!channel) {
