@@ -44,18 +44,18 @@ client.on("messageCreate", async message => {
 
   const PasteChannelId = message.channel.id;
 
-  const CiteMsg = await channel.messages.fetch(message_id);
+  const CiteMsg = channel.messages.fetch(message_id).then(cmsg => {
 
-  var CiteEmbed = new MessageEmbed()
-    .setAuthor(CiteMsg.member.displayName, CiteMsg.member.user.displayAvatarURL())
-    .setDescription(CiteMsg.content)
-    .setImage(CiteMsg.attachments.map(attachment => attachment.url)[0])
-    .setFooter(`${CiteMsg.guild.name} #${CiteMsg.channel.name}`, CiteMsg.guild.iconURL())
-    .setTimestamp(CiteMsg.createdTimestamp)
-    .setColor(1752220);
+    var CiteEmbed = new MessageEmbed()
+      .setAuthor(cmsg.member.displayName, cmsg.member.user.displayAvatarURL())
+      .setDescription(cmsg.content)
+      .setImage(cmsg.attachments.map(attachment => attachment.url)[0])
+      .setFooter(`${cmsg.guild.name} #${cmsg.channel.name}`, cmsg.guild.iconURL())
+      .setTimestamp(cmsg.createdTimestamp)
+      .setColor(1752220);
 
-  client.channels.cache.get(PasteChannelId).send({ embeds: [CiteEmbed] });
-
+    client.channels.cache.get(PasteChannelId).send({ embeds: [CiteEmbed] });
+  })
 });
 
 client.on("messageCreate", message => {
