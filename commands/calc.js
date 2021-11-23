@@ -1,5 +1,6 @@
 const math = require('mathjs');
 const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "calc",
@@ -21,13 +22,13 @@ module.exports = {
         }
 
         //Finally
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
             .setColor(1752220)
             .setTitle("Calc")
             .addField("計算式", `\`\`\`js\n${args.join(' ')}\`\`\``)
             .addField("結果", `\`\`\`js\n${resp}\`\`\``);
 
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed]});
 
         console.log(`${args.join(' ')} = ${resp}`);
     },

@@ -1,10 +1,10 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require('discord.js');
 
 const { Period, EvTitle, DocLink, SheLink, EvAliases } = require('../config.json')
 
 /* --- */
 
-const EmbedEvent = new Discord.MessageEmbed()
+const EmbedEvent = new MessageEmbed()
   .setTitle(`${Period} 「${EvTitle}」`)
   .setDescription(
     `[[詳細](${DocLink})]　[[シート](${SheLink})]`
@@ -17,7 +17,7 @@ module.exports = {
     aliases: ["event", `${EvAliases}`],
 
     async execute(client, message, args) {
-        message.channel.send(EmbedEvent);
+        message.channel.send({ embeds : [EmbedEvent] });
 
         return;
     },

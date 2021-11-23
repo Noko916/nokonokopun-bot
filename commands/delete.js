@@ -7,7 +7,7 @@ module.exports = {
 
     async execute(client, message, args) {
 
-        if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Error: 権限がありません");
+        if (!message.member.permissions.has("ADMINISTRATOR")) return message.channel.send("Error: 権限がありません");
 
         if (args[0] > LimitNum) return message.channel.send(`${LimitNum} 件までにしてください`);
 

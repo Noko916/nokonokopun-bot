@@ -1,6 +1,6 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require('discord.js');
 
-const EmbedCommunity = new Discord.MessageEmbed()
+const EmbedCommunity = new MessageEmbed()
   .setTitle("コミュ一覧")
   .addField(
     "Argine",
@@ -25,7 +25,7 @@ module.exports = {
 
   async execute(client, message, args) {
 
-    message.channel.send(EmbedCommunity);
+    message.channel.send({ embeds: [EmbedCommunity] });
     return;
   },
 };
