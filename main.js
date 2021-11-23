@@ -1,7 +1,7 @@
-const Discord     = require("discord.js");
-const fs          = require('fs');
+const Discord = require("discord.js");
+const fs = require('fs');
 const { Intents, Client, MessageEmbed } = require("discord.js");
-const { prefix, h_per, o_per, version }  = require('./config.json');
+const { prefix, h_per, o_per, version } = require('./config.json');
 
 const options = {
   intents: ["GUILDS", "GUILD_MESSAGES"],
@@ -44,15 +44,15 @@ client.on("messageCreate", async message => {
 
   const PasteChannelId = message.channel.id;
 
-  channel.messages.fetch(message_id);
+  const CiteMsg = await channel.messages.fetch(message_id);
 
   var CiteEmbed = new MessageEmbed()
-  .setAuthor(message.member.displayName, message.member.user.displayAvatarURL())
-  .setDescription(message.content)
-  .setImage(message.attachments.map(attachment => attachment.url)[0])
-  .setFooter(`${message.guild.name} #${message.channel.name}`, message.guild.iconURL())
-  .setTimestamp(message.createdTimestamp)
-  .setColor(1752220);
+    .setAuthor(CiteMsg.member.displayName, CiteMsg.member.user.displayAvatarURL())
+    .setDescription(CiteMsg.content)
+    .setImage(CiteMsg.attachments.map(attachment => attachment.url)[0])
+    .setFooter(`${CiteMsg.guild.name} #${CiteMsg.channel.name}`, CiteMsg.guild.iconURL())
+    .setTimestamp(CiteMsg.createdTimestamp)
+    .setColor(1752220);
 
   client.channels.cache.get(PasteChannelId).send({ embeds: [CiteEmbed] });
 
@@ -94,7 +94,7 @@ client.on("messageCreate", message => {
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
   //コマンド拒否
- if (cmdrand <= h_per && message.author.id === "284375687714963456" && !message.content.includes("per")) {
+  if (cmdrand <= h_per && message.author.id === "284375687714963456" && !message.content.includes("per")) {
     message.channel.send(`いやです！:smirk:　\`拒否率: ${h_per}%\``);
     return;
   } else if (cmdrand <= o_per && message.author.id != "284375687714963456" && !message.content.includes("per")) {
