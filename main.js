@@ -46,7 +46,7 @@ client.on("messageCreate", message => {
 
   if (!cmd) {
     console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
-    return message.channel.send(`そのコマンドは存在しません`)
+    return; //message.channel.send(`そのコマンドは存在しません`)
   }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
