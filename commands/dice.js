@@ -28,9 +28,9 @@ module.exports = {
     ) {
       message.channel.send(`ダイスは20個以下にしてください`);
     } else if (
-      commandArgs[1] > 1000 //ダイス目制限
+      commandArgs[1] > 2000 //ダイス目制限
     ) {
-      message.channel.send(`1000以下のダイスにしてください`);
+      message.channel.send(`2000以下のダイスにしてください`);
     } else {
       var commandArgs = args[0].split("d");
       for (let x = 0; x < commandArgs[0]; x++) {
