@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: "help",
   description: "コマンドの使い方を表示します",
-  aliases: ["halp", "welp", "walp", "command", "commands", "cmd", "herupu"],
+  aliases: ["halp", "welp", "walp", "command", "commands", "cmd", "herupu", "komando", "komand"],
 
   async execute(client, message, args) {
     const { commands } = message.client;
