@@ -36,8 +36,6 @@ client.on("messageCreate", message => {
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
 
-  message.channel.send("現在このbotは使用できません。"); return;
-
   let args = message.content
     .slice(prefix.length)
     .trim()
@@ -50,7 +48,8 @@ client.on("messageCreate", message => {
 
   if (!cmd) {
     console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
-    return; //message.channel.send(`そのコマンドは存在しません`)
+    return message.channel.send(`縺昴ｓ縺ｪ繧ｳ繝槭Φ繝峨?縺ゅｊ縺ｾ縺帙ｓ
+    繧ｨ繝ｩ繝ｼ繧定ｵｷ縺薙＆縺ｪ縺?〒縺上□縺輔＞`);
   }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
