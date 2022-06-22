@@ -25,14 +25,18 @@ client.on("messageCreate", message => {
 
   if (message.content.includes("everyone")) return;
 
+  /*
   if (message.mentions.has(client.user)) {
     message.reply(
       "呼びましたか？\n問題が発生した時は、<@221360357191581697> に連絡してください。"
     );
     return;
   }
+  */
 
   if (!message.content.startsWith(prefix)) return; //prefixがついてないコマンドを無視
+
+  message.channel.send("現在このbotは使用できません。"); return;
 
   let args = message.content
     .slice(prefix.length)
