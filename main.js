@@ -48,8 +48,7 @@ client.on("messageCreate", message => {
 
   if (!cmd) {
     console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
-    return message.channel.send(`繧ｨ繝ｩ繝ｼ繧定ｵｷ縺薙☆縺ｪ縺｣縺ｦ險?縺｣縺溘?縺壹〒縺吶ｈ縺ｭ
-    縺ｾ縺?邯壹￠繧九ｓ縺ｧ縺吶°`);
+    return message.reply(`やめて`);
   }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
