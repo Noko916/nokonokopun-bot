@@ -48,7 +48,7 @@ client.on("messageCreate", message => {
 
   if (!cmd) {
     console.log(`${message.author.tag} ran the command ${prefix}${cmdName}`);
-    return message.reply(`やめて`);
+    return message.reply(`やめろ`);
   }
   const cmdrand = Math.floor(Math.random() * 100) + 1; //乱数生成 1~100
 
