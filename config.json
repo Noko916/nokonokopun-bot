@@ -3,11 +3,11 @@
     "h_per": 10,
     "o_per": 1,
 
-    "Period"    : "2022.2 - 2022.6",
-    "EvTitle"   : "登れ！バトルタワー！",
-    "DocLink"   : "https://docs.google.com/document/d/1MkNCov6c-Iv75TPvP941-Ntd7hPx2cda6QEAlkLi7zY/edit?usp=sharing",
-    "SheLink"   : "https://bit.ly/2Tu57KR",
-    "EvAliases" : "bt",
+    "Period"    : "2022.7",
+    "EvTitle"   : "復刻！　Star　Jackpot　Chance！",
+    "DocLink"   : "https://docs.google.com/document/d/1_4MhYQNJmbXAh2a5KLToRUl75pDp5xUhkERkLAPp2pI/edit",
+    "SheLink"   : "-",
+    "EvAliases" : "sjp",
 
-    "version": "130"
+    "version": "132"
 }
